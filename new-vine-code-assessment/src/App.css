@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.modal-open-btn {
+  border-radius: 10px;
+  border: 3px solid rgb(0, 38, 255);
+  padding: 0 25px;
+}
+
+.modal-open-btn:hover {
+  cursor: pointer;
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.555), rgb(0, 0, 0), blue);
+  display: inline-block;
+  border: 3px solid yellow;
+  border-radius: 10px;
+}
