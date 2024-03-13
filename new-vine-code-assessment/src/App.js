@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h4>Hi there! This is the base page (no direction was given to how this should look).</h4>
+        <h4>Hi there! This is the base page.</h4><h5>No content was provided for this section, but do make sure to open the Modal and interact with the page.</h5>
         <div className="modal-open-btn" onClick={() => setIsModalOpen(true)}>
           <h2>Click here to open the Modal!</h2>
         </div>
