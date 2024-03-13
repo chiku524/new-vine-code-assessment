@@ -18,7 +18,7 @@
 .modal-body {
     background-color: whitesmoke;
     width: 75%;
-    height: 85%;
+    height: 90%;
     position: relative;
     z-index: 11;
     cursor: default;
@@ -383,13 +383,19 @@
     border: 1px solid rgba(46, 46, 161, 0.137);
     border-radius: 10px;
     margin-left: 45px;
-    min-width: 50%;
+    min-width: 70%;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 10px;
     position: relative;
+}
+
+@media screen and (max-width: 1300px) {
+    .split-schedule-dropdown-1, .split-schedule-dropdown-2, .split-schedule-dropdown-3, .split-schedule-dropdown-4 {
+        min-width: 50%;
+    }
 }
 
 .split-schedule-dropdown-1:hover, .split-schedule-dropdown-2:hover, .split-schedule-dropdown-3:hover, .split-schedule-dropdown-4:hover {

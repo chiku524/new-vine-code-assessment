@@ -42,38 +42,38 @@ function Modal(props) {
             document.querySelector(".import-dropdown .dropdown-content").classList.remove("import-dropdown-open");
         }
 
-        if(splitSchedule == "single") {
+        if(splitSchedule === "single") {
             if(tOneClientDropdown) {
                 document.querySelector(".split-schedule-dropdown-1 .dropdown-content").classList.add("schedule-dropdown-open");
-            } else if(tOneClientDropdown == false){
+            } else if(tOneClientDropdown === false){
                 document.querySelector(".split-schedule-dropdown-1 .dropdown-content").classList.remove("schedule-dropdown-open");
             }
         } else {
             if(tOneClientDropdown) {
                 document.querySelector(".split-schedule-dropdown-1 .dropdown-content").classList.add("schedule-dropdown-open");
-            } else if(tOneClientDropdown == false){
+            } else if(tOneClientDropdown === false){
                 document.querySelector(".split-schedule-dropdown-1 .dropdown-content").classList.remove("schedule-dropdown-open");
             }
             if(tTwoClientDropdown) {
                 document.querySelector(".split-schedule-dropdown-2 .dropdown-content").classList.add("schedule-dropdown-open");
-            } else if(tTwoClientDropdown == false) {
+            } else if(tTwoClientDropdown === false) {
                 document.querySelector(".split-schedule-dropdown-2 .dropdown-content").classList.remove("schedule-dropdown-open");
             }
             if(tThreeClientDropdown) {
                 document.querySelector(".split-schedule-dropdown-3 .dropdown-content").classList.add("schedule-dropdown-open");
-            } else if(tThreeClientDropdown == false) {
+            } else if(tThreeClientDropdown === false) {
                 document.querySelector(".split-schedule-dropdown-3 .dropdown-content").classList.remove("schedule-dropdown-open");
             }
             if(tFourClientDropdown) {
                 document.querySelector(".split-schedule-dropdown-4 .dropdown-content").classList.add("schedule-dropdown-open");
-            } else if(tFourClientDropdown == false) {
+            } else if(tFourClientDropdown === false) {
                 document.querySelector(".split-schedule-dropdown-4 .dropdown-content").classList.remove("schedule-dropdown-open");
             }
         }
         
 
         document.querySelector(".modal-body").onclick = function() {closeDropDowns()};
-    }, [importDropdownOpen, tOneClientDropdown, tTwoClientDropdown, tThreeClientDropdown, tFourClientDropdown])
+    }, [splitSchedule, importDropdownOpen, tOneClientDropdown, tTwoClientDropdown, tThreeClientDropdown, tFourClientDropdown])
 
     useEffect(() => {
         toleranceSwitchOn ? document.querySelector(".switch-label").style.backgroundColor = "green" : document.querySelector(".switch-label").style.backgroundColor = "grey";
@@ -138,7 +138,7 @@ function Modal(props) {
                             <div className="upload-btn">Upload Manifest</div>
                         </div>
                         <hr style={{width: "100%", margin: "10px 0 0", borderWidth: "0", height: "1px", color: "rgba(46, 46, 161, 0.137)", backgroundColor: "rgba(46, 46, 161, 0.137)"}}/>
-                        {file ? <div className="uploaded-file"><img src={Photo} alt="photo icon from flaticon.com" /><div className="file-progress"><p>{formatName(file.name)}&emsp;&emsp;&emsp;&emsp;</p><hr style={{marginLeft: "0", width: "70%", borderWidth: "0", height: "2px", color: "rgba(152, 2, 172, 0.404)", backgroundColor: "rgba(152, 2, 172, 0.404)"}}></hr></div><p className="size">{formatBytes(file.size)}</p></div> : null }
+                        {file ? <div className="uploaded-file"><img src={Photo} alt="photograph icon from flaticon.com" /><div className="file-progress"><p>{formatName(file.name)}&emsp;&emsp;&emsp;&emsp;</p><hr style={{marginLeft: "0", width: "70%", borderWidth: "0", height: "2px", color: "rgba(152, 2, 172, 0.404)", backgroundColor: "rgba(152, 2, 172, 0.404)"}}></hr></div><p className="size">{formatBytes(file.size)}</p></div> : null }
                         <hr style={{width: "100%", margin: "0", borderWidth: "0", height: "1px", color: "rgba(46, 46, 161, 0.137)", backgroundColor: "rgba(46, 46, 161, 0.137)"}}/>
                     </div>
                     <hr style={{width: "40%", margin: "10px 0 0 25px", borderWidth: "0", height: "2px", color: "rgba(46, 46, 161, 0.137)", backgroundColor: "rgba(46, 46, 161, 0.137)"}}/>
@@ -180,13 +180,13 @@ function Modal(props) {
                             <h5>Client:</h5>
                             <div className="client-selection-checkbox">
                                 <label>
-                                    <input className="checkbox-round yes" type="checkbox" onChange={() => {}} checked={Boolean(splitSchedule=="single")} onClick={() => setSplitSchedule("single")}/><span onClick={() => setSplitSchedule("single")}>Single</span>
+                                    <input className="checkbox-round yes" type="checkbox" onChange={() => {}} checked={Boolean(splitSchedule==="single")} onClick={() => setSplitSchedule("single")}/><span onClick={() => setSplitSchedule("single")}>Single</span>
                                 </label>
                                 <label>
-                                    <input className="checkbox-round no" type="checkbox" onChange={() => {}} checked={Boolean(splitSchedule=="multiple")} onClick={() => setSplitSchedule("multiple")}/><span onClick={() => setSplitSchedule("multiple")}>Multiple</span>
+                                    <input className="checkbox-round no" type="checkbox" onChange={() => {}} checked={Boolean(splitSchedule==="multiple")} onClick={() => setSplitSchedule("multiple")}/><span onClick={() => setSplitSchedule("multiple")}>Multiple</span>
                                 </label>
                             </div>
-                            {splitSchedule == "single" ? <div className="dropdown"><span>Testing Center 1</span>
+                            {splitSchedule === "single" ? <div className="dropdown"><span>Testing Center 1</span>
                                                             <div className="split-schedule-dropdown-1" onClick={() => setTOneClientDropdown(!tOneClientDropdown)}>
                                                                 <h5>&emsp;{tOneClientName}</h5>
                                                                 <img src={DownArrow} alt="down arrow from flaticon.com" width="25px" height="25px" />
