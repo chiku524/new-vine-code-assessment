@@ -4,14 +4,15 @@ import Close from "../icons/close.png";
 import DownArrow from "../icons/down-arrow.png";
 import Document from "../icons/document.png";
 import Photo from "../icons/photo.png";
+import Clock from "../icons/clock.png";
 
 function Modal(props) {
     const [importDropdownOpen, setImportDropdownOpen] = useState(false);
     const [importName, setImportName] = useState("");
     const [file, setFile] = useState();
-    const [toleranceSwitchOn, setToleranceSwitchOn] = useState(false);
+    const [toleranceSwitchOn, setToleranceSwitchOn] = useState("OFF");
     const [socialDistancing, setSocialDistancing] = useState(true);
-    const [splitSchedule, setSplitSchedule] = useState("single");
+    const [splitSchedule, setSplitSchedule] = useState("multiple");
     const [tOneClientDropdown, setTOneClientDropdown] = useState(false);
     const [tTwoClientDropdown, setTTwoClientDropdown] = useState(false)
     const [tThreeClientDropdown, setTThreeClientDropdown] = useState(false)
@@ -76,7 +77,13 @@ function Modal(props) {
     }, [splitSchedule, importDropdownOpen, tOneClientDropdown, tTwoClientDropdown, tThreeClientDropdown, tFourClientDropdown])
 
     useEffect(() => {
-        toleranceSwitchOn ? document.querySelector(".switch-label").style.backgroundColor = "green" : document.querySelector(".switch-label").style.backgroundColor = "grey";
+        if(toleranceSwitchOn === "ON") {
+            document.querySelector(".switch-label").style.backgroundColor = "green";
+            document.querySelector(".switch-button").classList.add("right");
+        } else { 
+            document.querySelector(".switch-label").style.backgroundColor = "grey";
+            document.querySelector(".switch-button").classList.remove("right");
+        }
     }, [toleranceSwitchOn])
 
     function handleFileUpload(event) {
@@ -126,7 +133,7 @@ function Modal(props) {
                             <p onClick={(event) => {event.stopPropagation(); setImportName("4th option"); closeDropDowns();}}>4th option</p>
                         </div>
                     </div>
-                    <hr style={{width: "60%", margin: "25px 0 0 25px", borderWidth: "0", height: "2px", color: "rgba(46, 46, 161, 0.137)", backgroundColor: "rgba(46, 46, 161, 0.137)"}}/>
+                    <hr style={{width: "60%", margin: "15px 0 0 25px", borderWidth: "0", height: "2px", color: "rgba(46, 46, 161, 0.137)", backgroundColor: "rgba(46, 46, 161, 0.137)"}}/>
                     <div className="file-import">
                         <h5>Select a manifest that you'd like to import</h5>
                         <div className='upload-box'>
@@ -150,10 +157,15 @@ function Modal(props) {
                     <div className="tolerance-window">
                         <h5>Tolerance Window:</h5>
                         <div className="tolerance-switch">
-                            <input className="switch-checkbox" id={`switch-new`} type="checkbox"/>
-                            <label className="switch-label" htmlFor={`switch-new`} onClick={() => setToleranceSwitchOn(!toleranceSwitchOn)}>
-                                <span className={`switch-button`} />
-                            </label>
+                            <input className="switch-checkbox" checked={toleranceSwitchOn==="ON"} id={`switch-new`} type="checkbox"/>
+                            <div className="toggle">
+                                <label className="switch-label" htmlFor={`switch-new`} onClick={() => {toleranceSwitchOn === "ON" ? setToleranceSwitchOn("OFF") : setToleranceSwitchOn("ON")}}>
+                                    <span className="switch-button" />  
+                                </label>
+                                <h4 style={{margin: "0 15px", paddingRight: "10px", textAlign: "center", borderRight: "2.5px solid rgba(46, 46, 161, 0.137)", fontWeight: "normal"}}>Toggle {toleranceSwitchOn}</h4>
+                                <img src={Clock} alt="clock from flaticon.com" width="25px"/>
+                                <h5 style={{marginLeft: "10px", fontWeight: "normal"}}>Select Tolerance Level</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,6 +209,7 @@ function Modal(props) {
                                                                     <p onClick={(event) => {event.stopPropagation(); setTOneClientName("4th option"); closeDropDowns();}}>4th option</p>
                                                                 </div>
                                                             </div>
+                                                            <img src={Clock} alt="clock from flaticon.com" width="25px" height="25px" style={{margin: "auto 15px"}}/>
                                                           </div> : 
                             <div className="dropdowns">
                                 <div className="dropdown">
@@ -211,6 +224,7 @@ function Modal(props) {
                                             <p onClick={(event) => {event.stopPropagation(); setTOneClientName("4th option"); closeDropDowns();}}>4th option</p>
                                         </div>
                                     </div>
+                                    <img src={Clock} alt="clock from flaticon.com" width="25px" height="25px" style={{margin: "auto 15px"}}/>
                                 </div>
                                 <div className="dropdown">
                                     <span>Testing Center 2</span>
@@ -224,6 +238,7 @@ function Modal(props) {
                                             <p onClick={(event) => {event.stopPropagation(); setTTwoClientName("4th option"); closeDropDowns();}}>4th option</p>
                                         </div>
                                     </div>
+                                    <img src={Clock} alt="clock from flaticon.com" width="25px" height="25px" style={{margin: "auto 15px"}}/>
                                 </div>
                                 <div className="dropdown">
                                     <span>Testing Center 3</span>
@@ -237,6 +252,7 @@ function Modal(props) {
                                             <p onClick={(event) => {event.stopPropagation(); setTThreeClientName("4th option"); closeDropDowns();}}>4th option</p>
                                         </div>
                                     </div>
+                                    <img src={Clock} alt="clock from flaticon.com" width="25px" height="25px" style={{margin: "auto 15px"}}/>
                                 </div>
                                 <div className="dropdown">
                                     <span>Testing Center 4</span>
@@ -250,6 +266,7 @@ function Modal(props) {
                                             <p onClick={(event) => {event.stopPropagation(); setTFourClientName("4th option"); closeDropDowns();}}>4th option</p>
                                         </div>
                                     </div>
+                                    <img src={Clock} alt="clock from flaticon.com" width="25px" height="25px" style={{margin: "auto 15px"}}/>
                                 </div>
                             </div>}
                         </div>
