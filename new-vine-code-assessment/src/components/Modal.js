@@ -22,12 +22,14 @@ function Modal(props) {
     const [tThreeClientName, setTThreeClientName] = useState("Select Client");
     const [tFourClientName, setTFourClientName] = useState("Select Client");
 
+    //closes modal when pressing escape
     document.addEventListener("keydown", (event) => {
         if(event.key === 'Escape') {
             props.onModalClose();
         }
     })
 
+    //function to close all of the dropdowns on click on the modal
     const closeDropDowns = () => {
         setImportDropdownOpen(false);
         setTOneClientDropdown(false);
@@ -36,6 +38,7 @@ function Modal(props) {
         setTFourClientDropdown(false);
     }
 
+    //use effect for functionality of the dropdown menus
     useEffect(() => {
         if(importDropdownOpen) {
             document.querySelector(".import-dropdown .dropdown-content").classList.add("import-dropdown-open");
@@ -76,6 +79,7 @@ function Modal(props) {
         document.querySelector(".modal-body").onclick = function() {closeDropDowns()};
     }, [splitSchedule, importDropdownOpen, tOneClientDropdown, tTwoClientDropdown, tThreeClientDropdown, tFourClientDropdown])
 
+    //radio switch button useEffect
     useEffect(() => {
         if(toleranceSwitchOn === "ON") {
             document.querySelector(".switch-label").style.backgroundColor = "green";
@@ -86,11 +90,13 @@ function Modal(props) {
         }
     }, [toleranceSwitchOn])
 
+    //handles the uploading of file (drag&drop)
     function handleFileUpload(event) {
         console.log(event.target.files[0]);
         setFile(event.target.files[0]);
     }
 
+    //formats the file size to its corresponding byte size
     function formatBytes(bytes) {
         var marker = 1024; // Change to 1000 if required
         var decimal = 3; // Change as required
@@ -108,6 +114,7 @@ function Modal(props) {
         else return(bytes / gigaBytes).toFixed(decimal) + " GB";
     }
 
+    //formats the name if it is too long 
     function formatName(name) {
         var nameConv = `${name}`
         if (nameConv.length > 30) return nameConv.slice(0, 30) + "...";
