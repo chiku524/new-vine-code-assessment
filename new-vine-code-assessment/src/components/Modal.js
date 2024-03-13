@@ -92,7 +92,6 @@ function Modal(props) {
 
     //handles the uploading of file (drag&drop)
     function handleFileUpload(event) {
-        console.log(event.target.files[0]);
         setFile(event.target.files[0]);
     }
 
